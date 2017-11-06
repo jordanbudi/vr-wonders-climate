@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<script src="https://aframe.io/releases/0.5.0/aframe.min.js"></script>
+	</head>
+	<body>
+		<a-scene>
+			<a-assets>
+				<img id="map" src="images/earth.jpg">
+			</a-assets>
+			<a-sky src="#map"></a-sky>
+			<a-entity text="value: Hello World;"></a-entity>
+			<video 
+				id="water" 
+				autoplay loop="true" 
+				src="video/waterPollution.mp4" 
+			></video>
+			
+			<a-video
+				src="#water"
+				position="-30 -60 -90"
+				width="80"
+				height="40"
+				rotation=" 0 50 0"
+			></a-video>
+			
+			
+		</a-scene>
+	</body>
+</html>
