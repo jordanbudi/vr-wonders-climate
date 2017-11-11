@@ -2,27 +2,72 @@
 <html>
 	<head>
 		<script src="https://aframe.io/releases/0.5.0/aframe.min.js"></script>
+		<script src="https://rawgit.com/oscarmarinmiro/aframe-video-controls/master/dist/aframe-video-controls.min.js"></script> 
+		<script type="text/javascript" src="script.js"></script>
 	</head>
 	<body>
 		<a-scene>
+			
+			<a-entity id="cameraCursor" position="0 0 0" >
+				<a-camera>
+					<a-cursor
+						color="white"
+						geometry="primitive: ring; radiusInner: .02; radiusOuter: .04 "
+					></a-cursor>
+				</a-camera>
+			</a-entity>
+			
 			<a-assets>
 				<img id="map" src="images/blueEarth.png">
+				<video 
+					id="water" 
+					autoplay loop="true" 
+					src="video/waterPollution.mp4" 
+				></video>
 			</a-assets>
-			<a-sky src="#map"></a-sky>
-			<a-entity text="value: Hello World;"></a-entity>
-			<video 
-				id="water" 
-				autoplay loop="true" 
-				src="video/waterPollution.mp4" 
-			></video>
 			
-			<a-video 
-				src="#water" 
-				position="-202.925 2.877 -105.364" 
-				width="80" height="40" 
-				rotation="0 50 0" 
-				visible="true"
-			></a-video>
+			<!--This is the map that youll see in the begining --START-->
+				<a-entity id="homepage" visible="true" >
+					<a-sky src="#map"></a-sky>
+					<a-box
+						position="-15 5 -6"
+						height="2"
+						width="2" 
+						depth="2" 
+						color="indigo"
+						onclick="travelToAfrica()"
+					></a-box>
+				</a-entity>
+			<!--This is the map that youll see in the begining --End-->
+			
+			<!--This is Africa and the water pollution problem --START-->
+				<a-entity id="sceneAfrica" visible="false" >
+					<a-sky color="red"></a-sky>
+				
+				<!-- This is the water pollution video -- beginning -->
+					<a-entity id="watervideo" visible="true">
+						<a-video 
+							src="#water" 
+							position="0 25 -50" 
+							width="80" 
+							height="40" 
+							rotation="0 0 0" 
+							visible="true"
+						></a-video>
+					</a-entity>
+					<a-entity 
+						video-controls=
+							"src:#water; 
+							barColor:red; 
+							size:1;
+							distance:1"
+					></a-entity>
+				<!-- This is the water pollution video -- ending -->
+				</a-entity>
+			<!--This is Africa and the water pollution problem --End-->
+			
+			
+
 			
 			
 		</a-scene>
